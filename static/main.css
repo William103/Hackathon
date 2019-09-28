@@ -7,6 +7,11 @@ div .zipcode{
   }
 
 output {
-   border: solid;
-   
+   border: 15px solid;
+   width: 30%;
+   margin: 20px;
 }
+
+
+
+
