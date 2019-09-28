@@ -6,12 +6,18 @@ from flask_googlemaps import Map, icons
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from config import Config
-# from geopy.geocoders import Nominatim
+from geopy.geocoders import Nominatim
+from geopy.distance import geodesic
 
 # set up geolocator
-# geolocator = Nominatim(user_agent="Hackathon")
-# location = geolocator.geocode("500 College Avenue PA")
-# print((location.latitude, location.longitude))
+geolocator = Nominatim(user_agent="Hackathon")
+location = geolocator.geocode("500 College Avenue PA")
+print((location.latitude, location.longitude))
+
+# set up distance measurements
+newport_ri = (41.49008, -71.312796)
+cleveland_oh = (41.499498, -81.695391)
+print(geodesic(newport_ri, cleveland_oh).miles)
 
 # set up form
 class LoginForm(FlaskForm):
@@ -54,4 +60,6 @@ def index():
     return render_template('index.html', title='Hi', legal=test_legal)
 
 if __name__ == "__main__":
+
+    # run app
     app.run()
