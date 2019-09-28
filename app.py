@@ -10,17 +10,7 @@ from config import Config
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
-state = 'PA'
-
-# set up geolocator
 geolocator = Nominatim(user_agent="Hackathon")
-location = geolocator.geocode("500 College Avenue PA")
-print((location.latitude, location.longitude))
-
-# set up distance measurements
-newport_ri = (41.49008, -71.312796)
-cleveland_oh = (41.499498, -81.695391)
-print(geodesic(newport_ri, cleveland_oh).miles)
 
 # set up form
 class LoginForm(FlaskForm):
@@ -59,9 +49,9 @@ def getzip():
                     state = row[1]
                     info = row[-1]
             if info == 0:
-                return render_template('index.html', title='Hi', form=form)
+                return render_template('index.html', title='Expungenation', form=form)
         return redirect('/info')
-    return render_template('index.html', title='Hi', form=form)
+    return render_template('index.html', title='Expungenation', form=form)
 
 
 # provide information
@@ -75,16 +65,17 @@ def index():
     location = (location.latitude, location.longitude)
     test = ''
     tests = []
-    with open("csv_files\\StateAddresses.csv", newline='') as f:
+    with open("csv_files\\StateAddresses2.csv", newline='') as f:
         reader = csv.reader(f)
         entities = []
         coords = []
         for row in reader:
             if row[0] == state:
                 entities.append(row)
-                coords.append((row[-1], row[-2]))
-        marker = entities + coords
-        return render_template('index.html', title='Hi', info=info, entities=entities, location=location, marker=marker)
+                coords.append((row[-2], row[-1]))
+        marker = coords
+        coords.append(location)
+        return render_template('index.html', title='Expungenation', info=info, entities=entities, location=location, marker=marker)
 if __name__ == "__main__":
 
     # run app
