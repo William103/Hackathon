@@ -50,10 +50,11 @@ def getzip():
             string = form.data['address'].split(' ')
             for row in reader:
                 if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1]:
-                    print(row[0], row[1], row[2])
                     info = row[-1]
             if info == 0:
-                return render_template('index.html', title='Hi', form=form)
+                location = geolocator.geocode(form.data['address'])
+                location = (location.longitude, location.latitude)
+                return render_template('index.html', title='Hi', form=form, location=location)
         return redirect('/info')
     return render_template('index.html', title='Hi', form=form)
 

@@ -62,9 +62,9 @@
             <form class="map" id="innerbox">
               <output>
                   <div>
+                     {% if location %}
                      {% with %}
                 
-                        {% set location=(-23.599097,-46.675903) %}
                         {% set style="width:500px; height:500px;"%}
                 
                         {{
@@ -76,6 +76,7 @@
                         )
                         }}
                      {% endwith %}
+                     {% endif %}
                     </div>
               </output>
             </form>
