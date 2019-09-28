@@ -1,13 +1,27 @@
-div.zipcode{
-    
-  }
+.header, .footer{
+   background-color: #F1F1F1;
+   text-align: center;
+   padding: 20px;
+ }
+
+ 
+table {
+   width: 100%;
+   align: center;
+}
+
+th {
+   
+}
+
 
 div.statelaw {
    border: 1px solid black;
    width: 200px;
    height: 400px;
    margin: 20px;
-   display: block;
+
+   position: relative;
       
 }
 
@@ -16,7 +30,8 @@ div.locallaw {
    width: 200px;
    height: 400px;
    margin: 20px;
-   display: block;
+
+   position: relative;
 }
 
 form.map{
@@ -24,6 +39,8 @@ form.map{
    width: 200px;
    height: 400px;
    margin: 20px;
+
+   position: relative;
 }
 
 
