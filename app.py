@@ -9,6 +9,8 @@ from config import Config
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
+state = 'PA'
+
 # set up geolocator
 geolocator = Nominatim(user_agent="Hackathon")
 location = geolocator.geocode("500 College Avenue PA")
@@ -21,7 +23,7 @@ print(geodesic(newport_ri, cleveland_oh).miles)
 
 # set up form
 class LoginForm(FlaskForm):
-    zipcode = StringField('Zip Code', validators=[DataRequired()])
+    address = StringField('Address', validators=[DataRequired()])
 
 # set up Flask app
 app = Flask(__name__)
@@ -36,10 +38,15 @@ GoogleMaps(
 
 
 # get address
+info = 0
 @app.route('/', methods=['GET', 'POST'])
 def getzip():
     form = LoginForm()
     if form.validate_on_submit():
+        string = form.address.split(' ')
+        with open('csv_info/state_info.csv') as f:
+            reader = csv.DictReader(f)
+            
         return redirect('/info')
     return render_template('index.html', title='Hi', form=form)
 
@@ -50,7 +57,7 @@ def index():
     with open("csv_files/state_info.csv") as f:
         reader = csv.DictReader(f)
         
-    return render_template('index.html', title='Hi', legal=test_legal)
+    return render_template('index.html', info = 
 
 if __name__ == "__main__":
 
