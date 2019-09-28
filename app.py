@@ -1,3 +1,4 @@
+import os
 import csv
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
@@ -43,11 +44,14 @@ info = 0
 def getzip():
     form = LoginForm()
     if form.validate_on_submit():
-        with open('csv_info/Generalcomparison.csv') as f:
-            reader = csv.DictReader(f)
-            string = form.data.split(' ')
+        with open("csv_files\\Generalcomparison.csv", newline='') as f:
+            reader = csv.reader(f)
+            string = form.data['address'].split(' ')
+            print(string[-1])
+            print(reader)
             for row in reader:
-                if row['state'] == string[-1] or row['STATE'] == string[-1] or row['abbrev'] == string[-1]:
+                print(row['state'])
+                if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1]:
                     info = row['Summary']
             if info == 0:
                 return render_template('index.html', title='Hi', form=form)
