@@ -11,6 +11,7 @@
     
     </div>
 
+    {% if form %}
     <div class="zipcode">
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -20,6 +21,7 @@
         </p>
       </form>
     </div>
+    {% endif %}
 
 
 <table>
