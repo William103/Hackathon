@@ -48,41 +48,36 @@
             </br>
             <div class="locallaw">
                 <ul>
-                    {% for entity in entities%}
-                    <li>{{entity.info}}</li>
-                    {%endfor%}
+                    {% if entities %}
+                      {% for entity in entities%}
+                      <li>{{entity[1]}} {{entity[2]}} {{entity[3]}} {{entity[4]}}</li>
+                      {%endfor%}
+                    {% endif %}
                 </ul>
             </div>
       
           </div>
     </td>
     <td>
-        <div >
-            </br>
-            <form class="map" id="innerbox">
-              <output>
                   <div>
-                     {% if location %}
+                     {% if marker %}
                      {% with %}
                 
+                        {% set loc=location %}
                         {% set style="width:500px; height:500px;"%}
                 
                         {{
                         googlemap(
                            "simple-map",
-                            location.0, location.1,
-                            markers=[location,],
+                            loc.0, loc.1,
+                            markers=[marker],
                             style=style
                         )
                         }}
                      {% endwith %}
                      {% endif %}
-                    </div>
-              </output>
-            </form>
-            
-      
-          </div>
+                     {{ location }}
+                  </div>
     </td>
   </tr>
     

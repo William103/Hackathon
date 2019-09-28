@@ -40,21 +40,26 @@ GoogleMaps(
 
 # get address
 info = 0
+location = (0, 0)
+form = 0
+state = 'PA'
 @app.route('/', methods=['GET', 'POST'])
 def getzip():
     global info
+    global form
+    global state
     form = LoginForm()
     if form.validate_on_submit():
         with open("csv_files\\Generalcomparison.csv", newline='') as f:
             reader = csv.reader(f)
             string = form.data['address'].split(' ')
+            print(string[-1])
             for row in reader:
-                if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1]:
+                if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1] or row[2] == string[-1]:
+                    state = row[1]
                     info = row[-1]
             if info == 0:
-                location = geolocator.geocode(form.data['address'])
-                location = (location.longitude, location.latitude)
-                return render_template('index.html', title='Hi', form=form, location=location)
+                return render_template('index.html', title='Hi', form=form)
         return redirect('/info')
     return render_template('index.html', title='Hi', form=form)
 
@@ -62,7 +67,24 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-    return render_template('index.html', title='Hi', info=info)
+    global location
+    global form
+    global geolocator
+    global state
+    location = geolocator.geocode(form.data['address'])
+    location = (location.latitude, location.longitude)
+    test = ''
+    tests = []
+    with open("csv_files\\StateAddresses.csv", newline='') as f:
+        reader = csv.reader(f)
+        entities = []
+        coords = []
+        for row in reader:
+            if row[0] == state:
+                entities.append(row)
+                coords.append((row[-1], row[-2]))
+        marker = entities + coords
+        return render_template('index.html', title='Hi', info=info, entities=entities, location=location, marker=marker)
 if __name__ == "__main__":
 
     # run app
