@@ -1,17 +1,11 @@
 import csv
-import gmaps
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map, icons
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from config import Config
-
-# set up google maps api
-with open('apikey.txt') as f:
-    api_key = f.readline()
-gmaps.configure(api_key=api_key)
-new_york_coordinates = (40.75, -74.00)
-gmaps.figure(center=new_york_coordinates, zoom_level=12)
 
 
 # set up form
@@ -21,6 +15,11 @@ class LoginForm(FlaskForm):
 app = Flask(__name__)
 app.config.from_object(Config)
 application = app
+
+GoogleMaps(
+        app,
+        key = "AIzaSyC29b1iK_279mJObeeAsqM2KRMnQHpeIlI"
+)
 
 
 # get zip code
