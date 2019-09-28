@@ -1,49 +1,61 @@
-.header, .footer{
+.header{
    background-color: black;
    text-align: center;
    padding: 20px;
+   color: white;
+   font: Serif;
+   font-size: 60px;
+ }
+
+ .footer {
+   background-color: black;
+   text-align: center;
+   padding: 20px;
+   font: Serif;
+   font-size:15px;
    color: white;
  }
 
  
 table {
    width: 100%;
-   align: center;
+   align-content: center;
+   font: "Sans-serif";
 }
 
 th {
    text-align: center;
    background-color: black;
    color: white;
+   border-radius: 15px;
 
 }
 
 
+
+
 div.statelaw {
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
       
 }
 
 div.locallaw {
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
 }
 
 form.map{
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
 }
 
