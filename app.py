@@ -23,17 +23,19 @@ print(geodesic(newport_ri, cleveland_oh).miles)
 class LoginForm(FlaskForm):
     zipcode = StringField('Zip Code', validators=[DataRequired()])
 
+# set up Flask app
 app = Flask(__name__)
 app.config.from_object(Config)
 application = app
 
+# set up Google Maps api key
 GoogleMaps(
         app,
         key = "AIzaSyASdoTGdVwSsYkr_ir1sK3IWKuWSfSVeng"
 )
 
 
-# get zip code
+# get address
 @app.route('/', methods=['GET', 'POST'])
 def getzip():
     form = LoginForm()
@@ -45,18 +47,9 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-    test_legal = [
-            {
-                'state': 'CA',
-                'service': 'representation',
-                'name': 'California Representation'
-            },
-            {
-                'state': 'PA',
-                'service': 'expungements',
-                'name': 'PLSE'
-            }
-    ]
+    with open(".csv") as f:
+        reader = csv.DictReader(f)
+        
     return render_template('index.html', title='Hi', legal=test_legal)
 
 if __name__ == "__main__":
