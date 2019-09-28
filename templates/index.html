@@ -37,6 +37,7 @@
         <div>
             </br>
             <div class="statelaw">
+              {{info|safe}}
               
             </div>
             <form>
@@ -48,7 +49,11 @@
         <div>
             </br>
             <div class="locallaw">
-      
+                <ul>
+                    {% for entity in entities%}
+                    <li>{{entity.info}}</li>
+                    {%endif%}
+                </ul>
             </div>
       
           </div>
