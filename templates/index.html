@@ -6,22 +6,65 @@
   </head>
 
   <body>
-    {% if form %}
-    <form action="" method="post" novalidate>
-      {{ form.hidden_tag() }}
-      <p>
-        {{ form.zipcode.label }}<br>
-        {{ form.zipcode(size=32) }}
-      </p>
-    </form>
-    {% else %}
-    <ul>
-      {% for entity in legal %}
-      <li>
-        {{ entity.name }} provides {{ entity.service }} in {{ entity.state }}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="zipcode">
+       Enter Zip Code Here</br>
+       <input type="text" name = "zipcode">
+       <input type="submit" value="Submit">
+    </div>
+
+
+
+
+    <div class="zipcode">
+      {% if form %}
+      <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p class="output">
+          {{ form.zipcode.label }}</br>
+          {{ form.zipcode(size=32) }}
+        </p>
+      </form>
+      {% else %}
+      <ul class="justlefthere">
+        {% for entity in legal %}
+        <li>
+          {{ entity.name }} provides {{ entity.service }} in {{ entity.state }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="stateLaw">
+      StateLaw</br>
+      <output id="" rows="10" cols="5">
+
+      </output>
+      <form action="" method="post" novalidate>
+        <output id="stateLaw">
+          <p >
+
+          </p>
+      </output>
+      </form>
+      
+    </div>
+
+    <div class="locallaw">
+      Local Laws</br>
+      <textarea id="" rows="10" cols="5">
+
+      </textarea>
+
+    </div>
+
+    <div class="Map">
+      Map</br>
+      <form 
+      <textarea id="" rows="10" cols="5">
+
+      </textarea>
+
+    </div>
   </body>
 </html>
