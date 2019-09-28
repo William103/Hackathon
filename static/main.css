@@ -5,6 +5,7 @@
    color: white;
    font: Serif;
    font-size: 60px;
+   position: static;
  }
 
  .footer {
