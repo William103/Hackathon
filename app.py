@@ -1,18 +1,17 @@
 import csv
-import gmaps
 from flask import Flask, render_template, redirect
 from flask_wtf import FlaskForm
+from flask_googlemaps import GoogleMaps
+from flask_googlemaps import Map, icons
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from config import Config
+# from geopy.geocoders import Nominatim
 
-# set up google maps api
-with open('apikey.txt') as f:
-    api_key = f.readline()
-gmaps.configure(api_key=api_key)
-new_york_coordinates = (40.75, -74.00)
-gmaps.figure(center=new_york_coordinates, zoom_level=12)
-
+# set up geolocator
+# geolocator = Nominatim(user_agent="Hackathon")
+# location = geolocator.geocode("500 College Avenue PA")
+# print((location.latitude, location.longitude))
 
 # set up form
 class LoginForm(FlaskForm):
@@ -21,6 +20,11 @@ class LoginForm(FlaskForm):
 app = Flask(__name__)
 app.config.from_object(Config)
 application = app
+
+GoogleMaps(
+        app,
+        key = "AIzaSyASdoTGdVwSsYkr_ir1sK3IWKuWSfSVeng"
+)
 
 
 # get zip code
