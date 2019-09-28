@@ -6,13 +6,6 @@ from flask_googlemaps import Map, icons
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from config import Config
-from geopy.geocoders import Nominatim
-
-# set up geolocator stuff
-geolocator = Nominatim(user_agent="map_thing")
-location = geolocator.geocode("500 College Avenue PA")
-print(location.address)
-print("")
 
 # set up form
 class LoginForm(FlaskForm):
