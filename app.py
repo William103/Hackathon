@@ -43,12 +43,12 @@ info = 0
 def getzip():
     form = LoginForm()
     if form.validate_on_submit():
-        string = form.address.split(' ')
-        with open('csv_info/state_info.csv') as f:
+        with open('csv_info/Generalcomparison.csv') as f:
             reader = csv.DictReader(f)
+            string = form.data.split(' ')
             for row in reader:
                 if row['state'] == string[-1] or row['STATE'] == string[-1] or row['abbrev'] == string[-1]:
-                    info = row
+                    info = row['Summary']
             if info == 0:
                 return render_template('index.html', title='Hi', form=form)
         return redirect('/info')
@@ -58,9 +58,7 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-        
-    return 3 #render_template('index.html', info = 
-
+    return '<p>test</p>'
 if __name__ == "__main__":
 
     # run app
