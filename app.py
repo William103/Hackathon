@@ -47,7 +47,7 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-    with open(".csv") as f:
+    with open("csv_files/state_info.csv") as f:
         reader = csv.DictReader(f)
         
     return render_template('index.html', title='Hi', legal=test_legal)
