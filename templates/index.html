@@ -22,15 +22,11 @@
     </div>
 
     <div class="zipcode">
-      {% if state == "address" %}
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p class="output">
           {{ form.address.label }}</br>
           {{ form.address(size=32) }}
-        </p>
-        <p>
-          {{form.submit()}}
         </p>
       </form>
     </div>

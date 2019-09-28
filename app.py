@@ -46,7 +46,11 @@ def getzip():
         string = form.address.split(' ')
         with open('csv_info/state_info.csv') as f:
             reader = csv.DictReader(f)
-            
+            for row in reader:
+                if row['state'] == string[-1] or row['STATE'] == string[-1] or row['abbrev'] == string[-1]:
+                    info = row
+            if info == 0:
+                return render_template('index.html', title='Hi', form=form)
         return redirect('/info')
     return render_template('index.html', title='Hi', form=form)
 
@@ -54,10 +58,8 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-    with open("csv_files/state_info.csv") as f:
-        reader = csv.DictReader(f)
         
-    return render_template('index.html', info = 
+    return 3 #render_template('index.html', info = 
 
 if __name__ == "__main__":
 
