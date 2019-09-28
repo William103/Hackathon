@@ -31,36 +31,31 @@ th {
 
 }
 
-td {
-   box-shadow: 20px 20px 100px grey;
-}
+
 
 
 div.statelaw {
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
       
 }
 
 div.locallaw {
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
 }
 
 form.map{
    border: 1px solid black;
-   width: 200px;
-   height: 400px;
-   margin: 20px;
-
+   width: 350px;
+   height: 500px;
+   margin: 30px;
    position: relative;
 }
 
