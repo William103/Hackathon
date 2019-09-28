@@ -14,8 +14,8 @@
     <div >
       Enter here</br>
       <div class="zipcode">
-          <form action="/action_page.php">
-            <input type="text" ><br>
+          <form action="" target="_self" method="GET">
+            <input type="text" >
             <input type="submit" value="Submit">
           </form>
       </div>
@@ -28,6 +28,9 @@
         <p class="output">
           {{ form.address.label }}</br>
           {{ form.address(size=32) }}
+        </p>
+        <p>
+          {{form.submit()}}
         </p>
       </form>
     </div>
