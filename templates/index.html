@@ -1,70 +1,104 @@
 <!DOCTYPE>
 <html>
   <head>
-    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
     <title>{{ title }} - TEST </title>
   </head>
 
   <body>
-    <div class="zipcode">
-       Enter Zip Code Here</br>
-       <input type="text" name = "zipcode">
-       <input type="submit" value="Submit">
+    <div class="header">
+        
+    
+        
+    </div>
+    <div >
+      Enter here</br>
+      <div class="zipcode">
+          <form action="/action_page.php">
+            <input type="text" ><br>
+            <input type="submit" value="Submit">
+          </form>
+      </div>
     </div>
 
-
-
-
     <div class="zipcode">
-      {% if form %}
+      {% if state == "address" %}
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p class="output">
-          {{ form.zipcode.label }}</br>
-          {{ form.zipcode(size=32) }}
+          {{ form.address.label }}</br>
+          {{ form.address(size=32) }}
         </p>
       </form>
-      {% else %}
-      <ul class="justlefthere">
-        {% for entity in legal %}
-        <li>
-          {{ entity.name }} provides {{ entity.service }} in {{ entity.state }}
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
     </div>
 
-    <div class="stateLaw">
-      StateLaw</br>
-      <output id="" rows="10" cols="5">
 
-      </output>
-      <form action="" method="post" novalidate>
-        <output id="stateLaw">
-          <p >
-
-          </p>
-      </output>
-      </form>
+<table>
+  <tr>
+    <th>State Law</th>
+    <th>Local Law Firm</th>
+    <th>Map</th>
+  </tr>
+  <tr>
+    <td>
+        <div>
+            </br>
+            <div class="statelaw">
       
+            </div>
+            <form>
+      
+            </form>
+        </div>
+    </td>
+    <td>
+        <div>
+            </br>
+            <div class="locallaw">
+      
+            </div>
+      
+          </div>
+    </td>
+    <td>
+        <div >
+            </br>
+            <form class="map" id="innerbox">
+              <output>
+                  <div>
+                     {% with %}
+                
+                        {% set location=(-23.599097,-46.675903) %}
+                        {% set style="width:500px; height:500px;"%}
+                
+                        {{
+                        googlemap(
+                           "simple-map",
+                            location.0, location.1,
+                            markers=[location,],
+                            style=style
+                        )
+                        }}
+                     {% endwith %}
+                    </div>
+              </output>
+            </form>
+            
+      
+          </div>
+    </td>
+  </tr>
+    
+
+    
+
+    
+  </table>
+
+
+    <div class="footer">
+
     </div>
 
-    <div class="locallaw">
-      Local Laws</br>
-      <textarea id="" rows="10" cols="5">
-
-      </textarea>
-
-    </div>
-
-    <div class="Map">
-      Map</br>
-      <form 
-      <textarea id="" rows="10" cols="5">
-
-      </textarea>
-
-    </div>
   </body>
 </html>

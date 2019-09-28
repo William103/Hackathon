@@ -1,12 +1,47 @@
-div .zipcode{
-    background-color: lightgrey;
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
-  }
+.header, .footer{
+   background-color: #F1F1F1;
+   text-align: center;
+   padding: 20px;
+ }
 
-output {
-   border: solid;
+ 
+table {
+   width: 100%;
+   align: center;
+}
+
+th {
    
 }
+
+
+div.statelaw {
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
+   margin: 20px;
+
+   position: relative;
+      
+}
+
+div.locallaw {
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
+   margin: 20px;
+
+   position: relative;
+}
+
+form.map{
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
+   margin: 20px;
+
+   position: relative;
+}
+
+
+
