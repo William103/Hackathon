@@ -42,17 +42,16 @@ GoogleMaps(
 info = 0
 @app.route('/', methods=['GET', 'POST'])
 def getzip():
+    global info
     form = LoginForm()
     if form.validate_on_submit():
         with open("csv_files\\Generalcomparison.csv", newline='') as f:
             reader = csv.reader(f)
             string = form.data['address'].split(' ')
-            print(string[-1])
-            print(reader)
             for row in reader:
-                print(row['state'])
                 if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1]:
-                    info = row['Summary']
+                    print(row[0], row[1], row[2])
+                    info = row[-1]
             if info == 0:
                 return render_template('index.html', title='Hi', form=form)
         return redirect('/info')
@@ -62,7 +61,7 @@ def getzip():
 # provide information
 @app.route("/info")
 def index():
-    return '<p>test</p>'
+    return render_template('index.html', title='Hi', info=info)
 if __name__ == "__main__":
 
     # run app
