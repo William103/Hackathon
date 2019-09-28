@@ -6,6 +6,22 @@
   </head>
 
   <body>
-    <h1>Hello, {{ user.username }}!</h1>
+    {% if form %}
+    <form action="" method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <p>
+        {{ form.zipcode.label }}<br>
+        {{ form.zipcode(size=32) }}
+      </p>
+    </form>
+    {% else %}
+    <ul>
+      {% for entity in legal %}
+      <li>
+        {{ entity.name }} provides {{ entity.service }} in {{ entity.state }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </body>
 </html>
