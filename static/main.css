@@ -1,17 +1,30 @@
-div .zipcode{
-    background-color: lightgrey;
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
+div.zipcode{
+    
   }
 
-output {
-   border: 15px solid;
-   width: 30%;
+div.statelaw {
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
    margin: 20px;
+   display: block;
+      
 }
 
+div.locallaw {
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
+   margin: 20px;
+   display: block;
+}
+
+form.map{
+   border: 1px solid black;
+   width: 200px;
+   height: 400px;
+   margin: 20px;
+}
 
 
 

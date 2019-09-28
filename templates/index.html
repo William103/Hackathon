@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
   <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
     <title>{{ title }} - TEST </title>
   </head>
 
@@ -35,32 +35,27 @@
       {% endif %}
     </div>
 
-    <div class="stateLaw">
+    <div>
       StateLaw</br>
-      <output id="" rows="10" cols="5">
+      <div class="statelaw">
 
-      </output>
-      <form action="" method="post" novalidate>
-        <output id="stateLaw">
-          <p >
+      </div>
+      <form>
 
-          </p>
-      </output>
       </form>
-      
     </div>
 
-    <div class="locallaw">
+    <div>
       Local Laws</br>
-      <textarea id="" rows="10" cols="5">
+      <div class="locallaw">
 
-      </textarea>
+      </div>
 
     </div>
 
-    <div class="Map">
+    <div >
       Map</br>
-      <form >
+      <form class="map" id="innerbox">
         <output>
             <div>
                {% with %}
