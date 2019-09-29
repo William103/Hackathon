@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="../static/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
     <title>{{ title }}</title>
   </head>
 
@@ -47,13 +47,20 @@
         <div>
             </br>
             <div class="locallaw">
-                <ul>
+                <ol>
                     {% if entities %}
                       {% for entity in entities%}
-                      <li>{{entity[1]}} {{entity[2]}} {{entity[3]}} {{entity[4]}}</li>
+                      <li>
+                        <ul>
+                          {% if entity[1] %} <li> {{ entity[1] }} </li> {% endif %}
+                          {% if entity[2] %} <li> <a href="{{ entity[2] }}"> {{ entity[2] }} </a></li> {% endif %}
+                          {% if entity[3] %} <li> {{ entity[3] }} </li> {% endif %}
+                          {% if entity[4] or entity[5] %} <li> {{ entity[4] }} {{ entity[5] }} </li> {% endif %}
+                        </ul>
+                      </li>
                       {%endfor%}
                     {% endif %}
-                </ul>
+                </ol>
             </div>
       
           </div>

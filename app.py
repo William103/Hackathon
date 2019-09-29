@@ -28,8 +28,6 @@ GoogleMaps(
 )
 
 
-# get address
-info = 0
 location = (0, 0)
 form = 0
 state = 'PA'
