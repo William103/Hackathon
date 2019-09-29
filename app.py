@@ -73,7 +73,8 @@ def index():
                 coords.append((row[-2], row[-1]))
         marker = coords
         coords.append(location)
-        return render_template('index.html', title='Expungenation', info=info, entities=entities, location=location, marker=marker)
+        return render_template('index.html', title='Expungenation', info=info,
+                entities=entities, location=location, marker=marker, table=1)
 
 if __name__ == "__main__":
     app.run()
