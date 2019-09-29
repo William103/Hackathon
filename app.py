@@ -14,7 +14,7 @@ geolocator = Nominatim(user_agent="Hackathon")
 
 # set up form
 class LoginForm(FlaskForm):
-    address = StringField('Address', validators=[DataRequired()])
+    address = StringField('Enter your address here', validators=[DataRequired()])
 
 # set up Flask app
 app = Flask(__name__)
@@ -74,7 +74,6 @@ def index():
         marker = coords
         coords.append(location)
         return render_template('index.html', title='Expungenation', info=info, entities=entities, location=location, marker=marker)
-if __name__ == "__main__":
 
-    # run app
+if __name__ == "__main__":
     app.run()

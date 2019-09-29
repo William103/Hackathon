@@ -24,6 +24,7 @@
     {% endif %}
 
 
+{% if table %}
 <table>
   <tr>
     <th>State Law</th>
@@ -36,7 +37,6 @@
             </br>
             <div class="statelaw">
               {{info|safe}}
-              
             </div>
             <form>
       
@@ -87,12 +87,28 @@
                   </div>
     </td>
   </tr>
-    
 
-    
-
-    
   </table>
+  {% else %}
+  <p>A criminal record does not have to define you. Based on your geographic
+  location, the Expungenationâ„¢ website will provide information on pardons and
+  expungements in your state, as well as nearby legal service providers.</p><br>
+  <h3>What is an expungement? </h3>
+  <p>An expungement (also called "expunction") is a court-ordered process in
+  which the legal record of an arrest or a criminal conviction is "sealed," or
+  erased in the eyes of the law. When a conviction is expunged, the process may
+  also be referred to as "setting aside a criminal conviction."</p><br>
+
+  <h3>What is a pardon?</h3>
+  <p>A pardon, on the other hand, does not clear, seal, or erase a criminal
+  record. In fact, on its own, a pardon does not affect the criminal record in
+  any way. Rather, a pardon is a way of obtaining official recognition from the
+  governor that the applicant has turned their life around. While the criminal
+  conviction will still show up on an employment background check, the person
+  applying will at least be able to say that they have a certified
+  recommendation from the state Pardon and Parole Board.</p>
+
+  {% endif %}
 
 
     <div class="footer">
