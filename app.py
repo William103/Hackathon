@@ -87,7 +87,7 @@ def index():
                 'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
                 'lat': entity[-2],
                 'lng': entity[-1],
-                'infobox': "<a href={}>{}</a>".format(entity[2], entity[1])
+                'infobox': "<a href=\"{}\">{}</a>".format(entity[2], entity[1])
                 })
         return render_template('index.html', title='Expungenation', info=info,
                 entities=entities[0:4], location=location, marker=markers, table=1,
