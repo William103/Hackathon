@@ -41,7 +41,6 @@ def getzip():
         with open("csv_files\\Generalcomparison.csv", newline='') as f:
             reader = csv.reader(f)
             string = form.data['address'].split(' ')
-            print(string[-1])
             for row in reader:
                 if row[0] == string[-1] or row[1] == string[-1] or row[2] == string[-1] or row[2] == string[-1]:
                     state = row[1]
@@ -53,12 +52,14 @@ def getzip():
 
 
 # provide information
-@app.route("/info")
+@app.route("/info", methods=['GET', 'POST'])
 def index():
     global location
     global form
     global geolocator
     global state
+    if form.validate_on_submit():
+        getzip()
     location = geolocator.geocode(form.data['address'])
     location = (location.latitude, location.longitude)
     test = ''
@@ -71,10 +72,15 @@ def index():
             if row[0] == state:
                 entities.append(row)
                 coords.append((row[-2], row[-1]))
-        marker = coords
+        distances = []
+        for coord in coords:
+            distances.append(geodesic(coord, location).miles)
+        distances = zip(distances, entities)
+        entities = [x for _, x in sorted(distances)]
         coords.append(location)
         return render_template('index.html', title='Expungenation', info=info,
-                entities=entities, location=location, marker=marker, table=1)
+                entities=entities, location=location, marker=coords, table=1,
+                form=form)
 
 if __name__ == "__main__":
     app.run()

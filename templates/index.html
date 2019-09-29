@@ -49,7 +49,7 @@
                           {% if entity[1] %} <li> {{ entity[1] }} </li> {% endif %}
                           {% if entity[2] %} <li> <a href="{{ entity[2] }}"> {{ entity[2] }} </a></li> {% endif %}
                           {% if entity[3] %} <li> {{ entity[3] }} </li> {% endif %}
-                          {% if entity[4] or entity[5] %} <li> {{ entity[4] }} {{ entity[5] }} </li> {% endif %}
+                          {% if entity[4] or entity[5] or entity[6] %} <li> {{entity[4] }} {{ entity[5] }} {{ entity[6] }} </li> {% endif %}
                         </ul>
                       </li>
                       {%endfor%}
@@ -70,7 +70,7 @@
                         googlemap(
                            "simple-map",
                             loc.0, loc.1,
-                            markers= marker,
+                            markers=marker,
                             style=style
                         )
                         }}
