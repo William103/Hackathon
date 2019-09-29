@@ -78,8 +78,19 @@ def index():
         distances = zip(distances, entities)
         entities = [x for _, x in sorted(distances)]
         coords.append(location)
+        markers = []
+        markers.append({
+            'lat': location[0],
+            'lng': location[1]})
+        for entity in entities:
+            markers.append({
+                'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                'lat': entity[-2],
+                'lng': entity[-1],
+                'infobox': "<a href={}>{}</a>".format(entity[2], entity[1])
+                })
         return render_template('index.html', title='Expungenation', info=info,
-                entities=entities, location=location, marker=coords, table=1,
+                entities=entities[0:4], location=location, marker=markers, table=1,
                 form=form)
 
 if __name__ == "__main__":
