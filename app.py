@@ -13,6 +13,7 @@ from geopy.distance import geodesic
 geolocator = Nominatim(user_agent="Hackathon")
 
 # set up form
+# test
 class LoginForm(FlaskForm):
     address = StringField('Enter your address here', validators=[DataRequired()])
 
